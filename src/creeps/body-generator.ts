@@ -33,6 +33,7 @@ export default class BodyGenerator {
         move = 1;
         break;
     }
+
     for (let i = 0; i < work; i++) body.push(WORK);
     for (let i = 0; i < carry; i++) body.push(CARRY);
     for (let i = 0; i < claim; i++) body.push(CLAIM);

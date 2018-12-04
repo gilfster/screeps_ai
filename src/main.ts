@@ -1,11 +1,18 @@
+import "prototypes/Source";
+
 import { ErrorMapper } from "utils/ErrorMapper";
 import Spawning from "modules/spawning";
+import Cache from "modules/cache/cache";
 import Miner from "creeps/roles/miner";
+import Carry from "creeps/roles/carry";
 import { Roles } from "enums/creeps/roles";
 
 const tasks: any = {
-  [Roles.MINER]: Miner.work
+  [Roles.MINER]: Miner.work,
+  [Roles.CARRY]: Carry.work
 };
+
+Cache.init();
 
 // When compiling TS to JS and bundling with rollup, the line numbers and file names in error messages change
 // This utility uses source maps to get the line numbers and file names of the original, TS source code

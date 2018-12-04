@@ -1,12 +1,24 @@
 import BodyGenerator from "creeps/body-generator";
 import { Roles } from "enums/creeps/roles";
+import PopulationControl from './population-control';
 
 export default class Spawning {
-  queue = [];
-
   public static precessQueue(){
     const getRole = (): Roles => {
-      return Roles.MINER;
+      let role: Roles;
+      switch (true) {
+        case PopulationControl.getTotalCreepsCount() < 1:
+          role = Roles.MINER;
+          break;
+        case PopulationControl.getTotalCreepsCount() === 1:
+          role = Roles.CARRY;
+          break;
+        default:
+          role = Roles.CARRY;
+          break;
+      }
+
+      return role;
     };
 
     try {
